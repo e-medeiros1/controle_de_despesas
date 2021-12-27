@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:minhas_despesas/models/transaction.dart';
 
 class Despesas extends StatefulWidget {
   const Despesas({Key? key}) : super(key: key);
@@ -10,6 +11,21 @@ class Despesas extends StatefulWidget {
 }
 
 class _DespesasState extends State<Despesas> {
+  final _transaction = [
+    Transaction(
+      id: 't1',
+      title: 'Novo tênis de corrida',
+      value: 300.10,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't2',
+      title: 'Novo celular',
+      value: 1200,
+      date: DateTime.now(),
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
