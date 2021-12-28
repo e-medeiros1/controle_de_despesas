@@ -47,17 +47,16 @@ class _DespesasState extends State<Despesas> {
                 ),
               ),
             ),
-            SizedBox(
-              child: Center(
-                child: Card(
-                  child: Text(
-                    'Lista de transações',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  elevation: 7,
-                ),
-              ),
-            ),
+            //Criando objetos visuais através do map
+            Column(
+              children: [
+                ..._transaction.map((tr) {
+                  return Card(
+                    child: Text(tr.title),
+                  );
+                }).toList(),
+              ],
+            )
           ],
         ));
   }
