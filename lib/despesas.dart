@@ -52,7 +52,42 @@ class _DespesasState extends State<Despesas> {
               children: [
                 ..._transaction.map((tr) {
                   return Card(
-                    child: Text(tr.title),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 15,
+                          ),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
+                              color: Colors.purple,
+                            ),
+                          ),
+                          child: Text(
+                            tr.value.toString(),
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.purple),
+                          ),
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              tr.title,
+                              style: TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.bold),
+                            ),
+                            Text(tr.date.toString(),
+                                style: TextStyle(color: Colors.grey)),
+                          ],
+                        )
+                      ],
+                    ),
                   );
                 }).toList(),
               ],
