@@ -21,7 +21,7 @@ class _DespesasState extends State<Despesas> {
     Transaction(
       id: 't2',
       title: 'Novo celular',
-      value: 1200,
+      value: 999.00,
       date: DateTime.now(),
     ),
   ];
@@ -66,8 +66,9 @@ class _DespesasState extends State<Despesas> {
                               color: Colors.purple,
                             ),
                           ),
+                          //Valor da compra
                           child: Text(
-                            tr.value.toString(),
+                            'R\$ ${tr.value.toStringAsFixed(2)}',
                             style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -77,11 +78,13 @@ class _DespesasState extends State<Despesas> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            //Título da compra
                             Text(
                               tr.title,
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.bold),
                             ),
+                            //Data da compra
                             Text(tr.date.toString(),
                                 style: TextStyle(color: Colors.grey)),
                           ],
