@@ -1,7 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+import 'package:minhas_despesas/components/transaction_list.dart';
+
 import 'package:minhas_despesas/models/transaction.dart';
 
 class Despesas extends StatefulWidget {
@@ -12,6 +13,9 @@ class Despesas extends StatefulWidget {
 }
 
 class _DespesasState extends State<Despesas> {
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+  //Alimntando a classe Transaction 
   final _transaction = [
     Transaction(
       id: 't1',
@@ -31,10 +35,11 @@ class _DespesasState extends State<Despesas> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.white,
+          foregroundColor: Colors.purple,
           title: Center(child: Text('Despesas pessoais')),
         ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
@@ -48,54 +53,39 @@ class _DespesasState extends State<Despesas> {
                 ),
               ),
             ),
-            //Criando objetos visuais através do map
-            Column(
-              children: [
-                ..._transaction.map((tr) {
-                  return Card(
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 15,
-                          ),
-                          padding: EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                              width: 2,
-                              color: Colors.purple,
-                            ),
-                          ),
-                          //Valor da compra
-                          child: Text(
-                            'R\$ ${tr.value.toStringAsFixed(2)}',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.purple),
-                          ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            //Título da compra
-                            Text(
-                              tr.title,
-                              style: TextStyle(
-                                  fontSize: 16, fontWeight: FontWeight.bold),
-                            ),
-                            //Data da compra
-                            Text(DateFormat('MMM d, y').format(tr.date),
-                                style: TextStyle(color: Colors.grey)),
-                          ],
-                        )
-                      ],
+            //Chamando a classe e passando o parâmetro nomeado
+            TransactionList(transactions: _transaction),
+            Card(
+              elevation: 7,
+              child: Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      controller: titleController,
+                      decoration:
+                          InputDecoration(labelText: 'Nome do produto:'),
                     ),
-                  );
-                }).toList(),
-              ],
-            )
+                    TextField(
+                      controller: valueController,
+                      decoration: InputDecoration(labelText: 'Valor (R\$):'),
+                    ),
+                    Container(
+                      margin: EdgeInsets.fromLTRB(360, 10, 10, 0),
+                      child: ElevatedButton(
+                          style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.purple)),
+                          onPressed: () {
+                            print(titleController.text);
+                            print(valueController.text);
+                          },
+                          child: Icon(Icons.add)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ));
   }
