@@ -19,22 +19,24 @@ class _DespesasState extends State<Despesas> {
           foregroundColor: Colors.white,
           title: Center(child: Text('Despesas pessoais')),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            SizedBox(
-              child: Center(
-                child: Card(
-                  child: Text(
-                    'Gráfico',
-                    style: TextStyle(fontSize: 20),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              SizedBox(
+                child: Center(
+                  child: Card(
+                    child: Text(
+                      'Gráfico',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    elevation: 7,
                   ),
-                  elevation: 7,
                 ),
               ),
-            ),
-            TransactionUser(),
-          ],
+              TransactionUser(),
+            ],
+          ),
         ));
   }
 }
