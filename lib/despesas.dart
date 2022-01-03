@@ -15,8 +15,8 @@ class _DespesasState extends State<Despesas> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.purple,
+          backgroundColor: Colors.purple,
+          foregroundColor: Colors.white,
           title: Center(child: Text('Despesas pessoais')),
         ),
         body: Column(
