@@ -30,7 +30,9 @@ class _TransactionUserState extends State<TransactionUser> {
     return Column(
       children: [
         TransactionList(transactions: _transaction),
-        TransactionForm(),
+        TransactionForm(
+          onSubmit: (title, value) {},
+        ),
       ],
     );
   }
