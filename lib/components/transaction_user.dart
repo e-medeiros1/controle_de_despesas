@@ -16,14 +16,26 @@ class _TransactionUserState extends State<TransactionUser> {
   final _transaction = [
     Transaction(
       id: 't1',
-      title: 'Novo tênis de corrida',
-      value: 300.10,
+      title: 'Notebook AVELL C62 MOB',
+      value: 10935.20,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't3',
+      title: 'Monitor LG 29\'',
+      value: 1360.10,
       date: DateTime.now(),
     ),
     Transaction(
       id: 't2',
-      title: 'Novo celular',
-      value: 999.80,
+      title: 'Headset Logitech',
+      value: 1115.80,
+      date: DateTime.now(),
+    ),
+    Transaction(
+      id: 't4',
+      title: 'Suporte para celular',
+      value: 22.80,
       date: DateTime.now(),
     ),
   ];
