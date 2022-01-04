@@ -6,9 +6,9 @@ class TransactionForm extends StatelessWidget {
   final titleController = TextEditingController();
   final valueController = TextEditingController();
 
-  final void Function(String, double) onSubmit;
+  final void Function(String, double) _onSubmit;
 
-  TransactionForm(this.onSubmit);
+  TransactionForm(this._onSubmit, {Key? key}) : super(key: key);
 
   _submitForm() {
     final title = titleController.text;
@@ -18,7 +18,7 @@ class TransactionForm extends StatelessWidget {
       return;
     }
 
-    onSubmit(title, value);
+    _onSubmit(title, value);
   }
 
   @override
