@@ -3,10 +3,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:minhas_despesas/components/transaction_form.dart';
+import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import 'models/transaction.dart';
-import './components/transaction_form.dart';
 
 class Despesas extends StatefulWidget {
   const Despesas({Key? key}) : super(key: key);
@@ -56,11 +55,11 @@ class _DespesasState extends State<Despesas> {
     });
   }
 
-  _openTransactionFormModal() {
+  _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
       builder: (_) {
-        return TransactionForm(null!);
+        return TransactionForm(_addTransaction);
       },
     );
   }
@@ -72,12 +71,6 @@ class _DespesasState extends State<Despesas> {
         backgroundColor: Colors.white,
         foregroundColor: Colors.purple,
         title: Text('Despesas pessoais'),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(Icons.add_outlined),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -100,7 +93,7 @@ class _DespesasState extends State<Despesas> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _openTransactionFormModal(context),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
