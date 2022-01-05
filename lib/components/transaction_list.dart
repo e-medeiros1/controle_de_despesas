@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:minhas_despesas/components/colors.dart';
 import 'package:minhas_despesas/models/transaction.dart';
 import 'package:intl/intl.dart';
 
@@ -26,14 +27,14 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    border: Border.all(width: 2, color: Colors.purple),
+                    border: Border.all(width: 2, color: Palette.kToDark),
                   ),
                   //Valor da compra
                   child: Text('R\$ ${tr.value.toStringAsFixed(2)}',
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
-                          color: Colors.purple)),
+                          color: Palette.kToDark)),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
