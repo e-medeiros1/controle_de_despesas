@@ -13,25 +13,25 @@ class Despesas extends StatefulWidget {
 }
 
 class _DespesasState extends State<Despesas> {
-  final _transaction = [
-    Transaction(
-      id: 't1',
-      title: 'Notebook AVELL C62 MOB',
-      value: 10935.20,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Monitor LG 29\'',
-      value: 1360.10,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'Headset Logitech',
-      value: 1115.80,
-      date: DateTime.now(),
-    ),
+  final List<Transaction> _transaction = [
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Notebook AVELL C62 MOB',
+    //   value: 10935.20,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Monitor LG 29\'',
+    //   value: 1360.10,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't3',
+    //   title: 'Headset Logitech',
+    //   value: 1115.80,
+    //   date: DateTime.now(),
+    // ),
   ];
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(

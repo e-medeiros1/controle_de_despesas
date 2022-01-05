@@ -10,7 +10,7 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 
-dependencies:
+dependencies: 
   flutter:
     sdk: flutter
   intl: ^0.17.0
@@ -34,10 +34,12 @@ font:
     font: 
       - asset: assets/fonts/Quicksand-Regular.ttf 
       - asset: assets/fonts/Quicksand-Bold.ttf
-        weigth: 700           
+        weigth: 700    
 
 flutter:
 
   uses-material-design: true
+  assets:
+   - assets/images/
 
  
