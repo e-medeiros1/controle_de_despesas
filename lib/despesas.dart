@@ -61,8 +61,7 @@ class _DespesasState extends State<Despesas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
-        title: Text('Despesas pessoais'),
+        title: Center(child: Text('Despesas pessoais')),
       ),
       body: SingleChildScrollView(
         child: Column(

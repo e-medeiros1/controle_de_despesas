@@ -24,6 +24,18 @@ dev_dependencies:
 
   flutter_lints: ^1.0.0
 
+font: 
+  - family: OpenSans
+    font: 
+      - asset: assets/fonts/OpenSans-Regular.ttf 
+      - asset: assets/fonts/OpenSans-Bold.ttf
+        weigth: 700
+  - family: Quicksand
+    font: 
+      - asset: assets/fonts/Quicksand-Regular.ttf 
+      - asset: assets/fonts/Quicksand-Bold.ttf
+        weigth: 700           
+
 flutter:
 
   uses-material-design: true
