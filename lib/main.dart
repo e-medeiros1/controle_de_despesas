@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:minhas_despesas/components/colors.dart';
 
 import 'despesas.dart';
 
@@ -17,7 +17,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Minhas despesas',
       debugShowCheckedModeBanner: false,
-      darkTheme: ThemeData.dark(),
+      theme: ThemeData(
+        primarySwatch: Palette.kToDark,
+      ),
       home: Despesas(),
     );
   }
