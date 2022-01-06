@@ -21,7 +21,7 @@ class TransactionList extends StatelessWidget {
               children: [
                 SizedBox(height: 20),
                 Text(
-                  'Não há nada por aqui \\_o_/',
+                  'Não há nada por aqui ¯\\_(ツ)_/¯',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(height: 20),
