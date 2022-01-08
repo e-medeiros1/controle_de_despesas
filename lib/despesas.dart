@@ -3,6 +3,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:minhas_despesas/components/chart.dart';
 import 'components/transaction_form.dart';
 import 'components/transaction_list.dart';
 import 'models/transaction.dart';
@@ -14,12 +15,18 @@ class Despesas extends StatefulWidget {
 
 class _DespesasState extends State<Despesas> {
   final List<Transaction> _transaction = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Notebook AVELL C62 MOB',
-    //   value: 10935.20,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't0',
+      title: 'Meu aniversário',
+      value: 100.29,
+      date: DateTime.now().subtract(Duration(days: 83)),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'Aniversário da Amanda',
+      value: 180.89,
+      date: DateTime.now().subtract(Duration(days: 2)),
+    ),
     // Transaction(
     //   id: 't2',
     //   title: 'Monitor LG 29\'',
@@ -33,6 +40,15 @@ class _DespesasState extends State<Despesas> {
     //   date: DateTime.now(),
     // ),
   ];
+
+  List<Transaction> get _recentTransaction {
+    return _transaction.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
+
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
@@ -67,17 +83,7 @@ class _DespesasState extends State<Despesas> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            SizedBox(
-              child: Center(
-                child: Card(
-                  child: Text(
-                    'Gráfico',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  elevation: 7,
-                ),
-              ),
-            ),
+            Chart(recentTransactions: _recentTransaction),
             TransactionList(transactions: _transaction),
           ],
         ),
