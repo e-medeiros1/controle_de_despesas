@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:minhas_despesas/components/colors.dart';
+
 
 import 'despesas.dart';
 
@@ -14,11 +14,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color myColor = Color(0xff123456);
     return MaterialApp(
       title: 'Minhas despesas',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Palette.kToDark,
+        primarySwatch: Colors.teal,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(
