@@ -39,42 +39,29 @@ class TransactionList extends StatelessWidget {
               itemBuilder: (ctx, index) {
                 final tr = transactions[index];
                 return Card(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 15, horizontal: 15),
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(width: 2, color: Colors.teal.shade500),
-                        ),
-                        //Valor da compra
-                        child: Text('R\$ ${tr.value.toStringAsFixed(2)}',
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.teal.shade500)),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Título da compra
-                          Text(
-                            tr.title,
-                            style: Theme.of(context).textTheme.headline6,
-
-                            // style: TextStyle(
-                            //   fontSize: 16,
-                            //   fontWeight: FontWeight.bold,
-                            // ),
+                  elevation: 7,
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      radius: 30,
+                      foregroundColor: Colors.black,
+                      backgroundColor: Colors.cyanAccent.shade100,
+                      child: Padding(
+                        padding: const EdgeInsets.all(5),
+                        child: FittedBox(
+                            child: Text(
+                          '\$${tr.value}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
                           ),
-                          //Data da compra
-                          Text(DateFormat('MMM d, y').format(tr.date),
-                              style: TextStyle(color: Colors.grey)),
-                        ],
-                      )
-                    ],
+                        )),
+                      ),
+                    ),
+                    title: Text(
+                      tr.title,
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    subtitle: Text(DateFormat('MMM d, y').format(tr.date),
+                        style: TextStyle(color: Colors.grey)),
                   ),
                 );
               },
