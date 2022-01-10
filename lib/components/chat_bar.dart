@@ -16,10 +16,10 @@ class ChatBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('    R\$${value.toStringAsFixed(2)}'),
-        const SizedBox(height: 7),
+        FittedBox(child: Text('\$${value.toStringAsFixed(2)}')),
+        const SizedBox(height: 3),
         Container(
-          height: 60,
+          height: 70,
           width: 10,
           child: Stack(
             alignment: Alignment.bottomCenter,
@@ -30,7 +30,7 @@ class ChatBar extends StatelessWidget {
                     color: Colors.grey,
                     width: 1.0,
                   ),
-                  color: Color.fromRGBO(220, 220, 220, 1),
+                  color: const Color.fromRGBO(220, 220, 220, 1),
                   borderRadius: BorderRadius.circular(5),
                 ),
               ),
@@ -39,14 +39,14 @@ class ChatBar extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                 ),
               ),
             ],
           ),
         ),
-        const SizedBox(height: 7),
+        const SizedBox(height: 3),
         Text(label),
       ],
     );
