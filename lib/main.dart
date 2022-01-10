@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       title: 'Minhas despesas',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.cyan,
+        scaffoldBackgroundColor: Colors.teal[100],
+        primarySwatch: Colors.teal,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
               headline6: TextStyle(

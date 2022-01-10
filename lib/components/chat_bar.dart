@@ -16,10 +16,13 @@ class ChatBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FittedBox(child: Text('\$${value.toStringAsFixed(2)}')),
+        SizedBox(
+          height: 17,
+          child: FittedBox(child: Text(value.toStringAsFixed(2))),
+        ),
         const SizedBox(height: 3),
         Container(
-          height: 70,
+          height: 80,
           width: 10,
           child: Stack(
             alignment: Alignment.bottomCenter,
