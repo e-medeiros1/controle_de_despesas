@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-
 import 'despesas.dart';
 
 void main(List<String> args) {
@@ -14,7 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color myColor = Color(0xff123456);
     return MaterialApp(
       title: 'Minhas despesas',
       debugShowCheckedModeBanner: false,
