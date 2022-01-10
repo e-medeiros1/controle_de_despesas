@@ -18,6 +18,7 @@ Aplicativo se encaminhando para a reta final, esquema de cores definido e lógic
 Aplicativo de controle de despesas, com gráfico semanal!
 
 #### #TO-DO: Conectar app com um banco de dados para as transações não sumirem quando o mesmo for reiniciado
+#### #TO-DO: Trabalhar responsividade
 
 ![image](https://user-images.githubusercontent.com/73318684/148833329-ae651e6c-39d3-470c-a338-a336e6bd0edc.png) 
 ![image](https://user-images.githubusercontent.com/73318684/148833559-f42b77d3-4088-489c-8af8-7380405350bc.png)
