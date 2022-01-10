@@ -20,19 +20,18 @@ class TransactionList extends StatelessWidget {
       child: transactions.isEmpty
           ? Column(
               children: [
-                SizedBox(height: 20),
+                SizedBox(height: 50),
                 Text(
-                  'Não há nada por aqui ¯\\_(ツ)_/¯',
+                  'Nenhuma transação cadastrada!',
+                  // 'Não há nada por aqui ¯\\_(ツ)_/¯',
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(height: 50),
-                Expanded(
-                  child: SizedBox(
-                    height: 200,
-                    child: Image.asset(
-                      'assets/images/nothing-found.png',
-                      fit: BoxFit.cover,
-                    ),
+                SizedBox(
+                  height: 300,
+                  child: Image.asset(
+                    'assets/images/nothing-found.png',
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],
