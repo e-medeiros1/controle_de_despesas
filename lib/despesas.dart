@@ -55,20 +55,35 @@ class _DespesasState extends State<Despesas> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Center(
+          child: Text(
+        'Despesas pessoais',
+        style: TextStyle(
+            color: Colors.white,
+            fontSize: 22 * MediaQuery.of(context).textScaleFactor),
+      )),
+    );
+
+    final availableHeight = MediaQuery.of(context).size.height -
+        appBar.preferredSize.height -
+        MediaQuery.of(context).padding.top;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-            child: Text(
-          'Despesas pessoais',
-          style: TextStyle(color: Colors.white),
-        )),
-      ),
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Chart(recentTransactions: _recentTransaction),
-            TransactionList(transactions: _transaction, onRemove: _deleteTransaction),
+            SizedBox(
+              height: availableHeight * 0.24,
+              child: Chart(recentTransactions: _recentTransaction),
+            ),
+            SizedBox(
+              height: availableHeight * 0.76,
+              child: TransactionList(
+                  transactions: _transaction, onRemove: _deleteTransaction),
+            ),
           ],
         ),
       ),
