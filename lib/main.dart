@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+// import 'package:flutter/services.dart';
 
 import 'despesas.dart';
 
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //Setando modo de apresentação do aplicativo apenas para modo retrato
+    // SystemChrome.setPreferredOrientations([
+    //   DeviceOrientation.portraitUp,
+    // ]);
     return MaterialApp(
       title: 'Minhas despesas',
       debugShowCheckedModeBanner: false,

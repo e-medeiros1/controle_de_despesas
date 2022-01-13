@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:minhas_despesas/models/transaction.dart';
 import 'package:intl/intl.dart';
@@ -15,24 +17,37 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return transactions.isEmpty
-        ? Column(
-            children: [
-              SizedBox(height: 50),
-              Text(
-                'Nenhuma transação cadastrada!',
-                // 'Não há nada por aqui ¯\\_(ツ)_/¯',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              SizedBox(height: 50),
-              SizedBox(
-                height: 300,
-                child: Image.asset(
-                  'assets/images/nothing-found.png',
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ],
+        ? LayoutBuilder(
+            builder: (ctx, constraints) {
+              return Column(
+                children: [
+                  SizedBox(
+                      height:
+                          constraints.maxHeight * (isLandscape ? 0.15 : 0.05)),
+                  SizedBox(
+                    height: constraints.maxHeight * 0.10,
+                    child: Text(
+                      'Nenhuma transação cadastrada!',
+                      // 'Não há nada por aqui ¯\\_(ツ)_/¯',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                  ),
+                  SizedBox(
+                      height:
+                          constraints.maxHeight * (isLandscape ? 0.15 : 0.05)),
+                  SizedBox(
+                    height: constraints.maxHeight * 0.49,
+                    child: Image.asset(
+                      'assets/images/nothing-found.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ],
+              );
+            },
           )
         : ListView.builder(
             itemCount: transactions.length,
@@ -65,13 +80,27 @@ class TransactionList extends StatelessWidget {
                   ),
                   subtitle: Text(DateFormat('MMM d, y').format(tr.date),
                       style: TextStyle(color: Colors.grey)),
-                  trailing: IconButton(
-                    onPressed: () {
-                      return onRemove(tr.id);
-                    },
-                    icon: Icon(Icons.delete_outline),
-                    color: Colors.black,
-                  ),
+                  trailing: MediaQuery.of(context).size.width > 500
+                      ? TextButton.icon(
+                          onPressed: () {
+                            return onRemove(tr.id);
+                          },
+                          icon: Icon(
+                            Icons.delete_outline,
+                            color: Colors.black,
+                          ),
+                          label: Text(
+                            'Excluir',
+                            style: TextStyle(color: Colors.teal.shade700),
+                          ),
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            return onRemove(tr.id);
+                          },
+                          icon: Icon(Icons.delete_outline),
+                          color: Colors.black,
+                        ),
                 ),
               );
             },
