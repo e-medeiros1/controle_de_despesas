@@ -26,7 +26,7 @@ class TransactionList extends StatelessWidget {
                 children: [
                   SizedBox(
                       height:
-                          constraints.maxHeight * (isLandscape ? 0.15 : 0.05)),
+                          constraints.maxHeight * (isLandscape ? 0.10 : 0.05)),
                   SizedBox(
                     height: constraints.maxHeight * 0.10,
                     child: Text(
@@ -37,7 +37,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   SizedBox(
                       height:
-                          constraints.maxHeight * (isLandscape ? 0.15 : 0.05)),
+                          constraints.maxHeight * (isLandscape ? 0.10 : 0.05)),
                   SizedBox(
                     height: constraints.maxHeight * 0.49,
                     child: Image.asset(

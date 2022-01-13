@@ -84,49 +84,51 @@ class _DespesasState extends State<Despesas> {
         appBar.preferredSize.height -
         MediaQuery.of(context).padding.top;
 
-    return Scaffold(
-      appBar: appBar,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // if (isLandscape)
-            //   Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: [
-            //       Text(
-            //         'Mostrar gráfico',
-            //         style: TextStyle(fontSize: 17),
-            //       ),
-            //       Switch(
-            //         value: _showChart,
-            //         onChanged: (value) {
-            //           setState(() {
-            //             _showChart = value;
-            //           });
-            //         },
-            //       ),
-            //     ],
-            //   ),
-            if (_showChart || !isLandscape)
-              SizedBox(
-                height: availableHeight * (isLandscape ? 0.7 : 0.24),
-                child: Chart(recentTransactions: _recentTransaction),
-              ),
-            if (!_showChart || !isLandscape)
-              SizedBox(
-                height: availableHeight * (isLandscape ? 1 : 0.76),
-                child: TransactionList(
-                    transactions: _transaction, onRemove: _deleteTransaction),
-              ),
-          ],
+    return SafeArea(
+      child: Scaffold(
+        appBar: appBar,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // if (isLandscape)
+              //   Row(
+              //     mainAxisAlignment: MainAxisAlignment.center,
+              //     children: [
+              //       Text(
+              //         'Mostrar gráfico',
+              //         style: TextStyle(fontSize: 17),
+              //       ),
+              //       Switch(
+              //         value: _showChart,
+              //         onChanged: (value) {
+              //           setState(() {
+              //             _showChart = value;
+              //           });
+              //         },
+              //       ),
+              //     ],
+              //   ),
+              if (_showChart || !isLandscape)
+                SizedBox(
+                  height: availableHeight * (isLandscape ? 0.75 : 0.24),
+                  child: Chart(recentTransactions: _recentTransaction),
+                ),
+              if (!_showChart || !isLandscape)
+                SizedBox(
+                  height: availableHeight * (isLandscape ? 1 : 0.76),
+                  child: TransactionList(
+                      transactions: _transaction, onRemove: _deleteTransaction),
+                ),
+            ],
+          ),
         ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.add),
+          onPressed: () => _openTransactionFormModal(context),
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
-      floatingActionButton: FloatingActionButton(
-              child: Icon(Icons.add),
-              onPressed: () => _openTransactionFormModal(context),
-            ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
