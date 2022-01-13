@@ -122,9 +122,7 @@ class _DespesasState extends State<Despesas> {
           ],
         ),
       ),
-      floatingActionButton: Platform.isIOS
-          ? Container()
-          : FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () => _openTransactionFormModal(context),
             ),
