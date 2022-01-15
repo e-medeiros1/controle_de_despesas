@@ -4,7 +4,7 @@ class Transaction {
   final double value;
   final DateTime date;
  
-  Transaction({
+  const Transaction({
     required this.id,
     required this.title,
     required this.value,

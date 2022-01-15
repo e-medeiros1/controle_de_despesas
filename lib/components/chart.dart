@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:minhas_despesas/components/chat_bar.dart';
@@ -43,7 +41,7 @@ class Chart extends StatelessWidget {
     return Card(
       shadowColor: Colors.teal,
       elevation: 5,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Padding(
         padding: const EdgeInsets.all(10),
         child: Row(

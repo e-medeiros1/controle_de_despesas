@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -60,13 +58,13 @@ class _TransactionFormState extends State<TransactionForm> {
               TextField(
                 controller: _titleController,
                 onSubmitted: (_) => _submitForm,
-                decoration: InputDecoration(labelText: 'Nome do produto:'),
+                decoration: const InputDecoration(labelText: 'Nome do produto:'),
               ),
               TextField(
                 controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 onSubmitted: (_) => _submitForm,
-                decoration: InputDecoration(labelText: 'Valor (R\$):'),
+                decoration: const InputDecoration(labelText: 'Valor (R\$):'),
               ),
               SizedBox(
                 height: 70,
@@ -77,11 +75,11 @@ class _TransactionFormState extends State<TransactionForm> {
                         _selectedDate == null
                             ? 'Nenhuma data selecionada'
                             : 'Data selecionada: ${DateFormat('MMM d, y').format(_selectedDate!)}',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ),
                     TextButton(
-                      child: Text(
+                      child: const Text(
                         'Selecionar data',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -94,7 +92,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   ElevatedButton(
-                    child: Text(
+                    child: const Text(
                       'Nova Transação',
                       style: TextStyle(color: Colors.white, fontSize: 17),
                     ),

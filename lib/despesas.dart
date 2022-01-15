@@ -1,7 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'dart:math';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:minhas_despesas/components/chart.dart';
 import 'components/transaction_form.dart';
@@ -20,7 +17,7 @@ class _DespesasState extends State<Despesas> {
   List<Transaction> get _recentTransaction {
     return _transaction.where((tr) {
       return tr.date.isAfter(DateTime.now().subtract(
-        Duration(days: 7),
+        const Duration(days: 7),
       ));
     }).toList();
   }
@@ -124,7 +121,7 @@ class _DespesasState extends State<Despesas> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
+          child: const Icon(Icons.add),
           onPressed: () => _openTransactionFormModal(context),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

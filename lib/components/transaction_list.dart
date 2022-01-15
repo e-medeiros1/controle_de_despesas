@@ -1,7 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:minhas_despesas/models/transaction.dart';
 import 'package:intl/intl.dart';
@@ -56,7 +52,7 @@ class TransactionList extends StatelessWidget {
               return Card(
                 shadowColor: Colors.tealAccent,
                 elevation: 5,
-                margin: EdgeInsets.symmetric(
+                margin: const EdgeInsets.symmetric(
                   vertical: 7,
                   horizontal: 5,
                 ),
@@ -68,7 +64,7 @@ class TransactionList extends StatelessWidget {
                       padding: const EdgeInsets.all(6),
                       child: Text(
                         '\$${tr.value.toStringAsFixed(2)}',
-                        style: TextStyle(
+                        style: const TextStyle(
                             fontWeight: FontWeight.bold, color: Colors.white),
                       ),
                     )),
@@ -79,13 +75,13 @@ class TransactionList extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline6,
                   ),
                   subtitle: Text(DateFormat('MMM d, y').format(tr.date),
-                      style: TextStyle(color: Colors.grey)),
+                      style: const TextStyle(color: Colors.grey)),
                   trailing: MediaQuery.of(context).size.width > 500
                       ? TextButton.icon(
                           onPressed: () {
                             return onRemove(tr.id);
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.delete_outline,
                             color: Colors.black,
                           ),
@@ -98,7 +94,7 @@ class TransactionList extends StatelessWidget {
                           onPressed: () {
                             return onRemove(tr.id);
                           },
-                          icon: Icon(Icons.delete_outline),
+                          icon: const Icon(Icons.delete_outline),
                           color: Colors.black,
                         ),
                 ),
