@@ -24,12 +24,17 @@ Aplicativo de controle de despesas, com gráfico semanal!
 
 Implementação do modo landscape e responsividade para dispositivos antigos  
 
-#### #TO-DO: Conectar app com um banco de dados para as transações não sumirem quando o mesmo for reiniciado
+
 
 
 ![image](https://user-images.githubusercontent.com/73318684/149382083-b2b387f5-ccc0-4ea4-b165-b07488750a28.png) 
-![image](https://user-images.githubusercontent.com/73318684/149382350-17ec6a37-4938-4ada-b467-2f3cb49b3b16.png)
+![image](https://user-images.githubusercontent.com/73318684/149382350-17ec6a37-4938-4ada-b467-2f3cb49b3b16.png)  
 
+##### Versão 1.0.3  
+
+Adicionado uma lista de cores para cada transação salva pelo usuário e feita a checagem do modo web do aplicativo e o mesmo está funcionando perfeitamente utilizando os recursos de landscape implementado anteriormente
+
+#### #TO-DO: Conectar app com um banco de dados para as transações não sumirem quando o mesmo for reiniciado
 
 
 
