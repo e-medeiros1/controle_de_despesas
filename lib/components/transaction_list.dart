@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:minhas_despesas/components/transaction_item.dart';
 import 'package:minhas_despesas/models/transaction.dart';
-import 'package:intl/intl.dart';
+// import 'package:intl/intl.dart';
 
 class TransactionList extends StatelessWidget {
   const TransactionList(
@@ -29,7 +29,7 @@ class TransactionList extends StatelessWidget {
                     child: Text(
                       'Nenhuma transação cadastrada!',
                       // 'Não há nada por aqui ¯\\_(ツ)_/¯',
-                      style: Theme.of(context).textTheme.headline6,
+                      style: Theme.of(context).textTheme.titleLarge,
                     ),
                   ),
                   SizedBox(

@@ -65,7 +65,7 @@ class _TransactionItemState extends State<TransactionItem> {
         ),
         title: Text(
           widget.tr.title,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         subtitle: Text(DateFormat('MMM d, y').format(widget.tr.date),
             style: const TextStyle(color: Colors.grey)),

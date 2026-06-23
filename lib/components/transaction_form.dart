@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class TransactionForm extends StatefulWidget {
-  final Function(String, double, DateTime?) onSubmit;
+  final void Function(String, double, DateTime?) onSubmit;
   const TransactionForm({Key? key, required this.onSubmit}) : super(key: key);
 
   @override
@@ -13,8 +13,15 @@ class _TransactionFormState extends State<TransactionForm> {
   final _titleController = TextEditingController();
   final _valueController = TextEditingController();
   DateTime? _selectedDate = DateTime.now();
-//Faz a checagem do textField e retorna os valores para onSubmit
-  _submitForm() {
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _valueController.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
     final title = _titleController.text;
     final value = double.tryParse(_valueController.text) ?? 0.0;
 
@@ -57,13 +64,13 @@ class _TransactionFormState extends State<TransactionForm> {
             children: [
               TextField(
                 controller: _titleController,
-                onSubmitted: (_) => _submitForm,
+                onSubmitted: (_) => _submitForm(),
                 decoration: const InputDecoration(labelText: 'Nome do produto:'),
               ),
               TextField(
                 controller: _valueController,
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
-                onSubmitted: (_) => _submitForm,
+                onSubmitted: (_) => _submitForm(),
                 decoration: const InputDecoration(labelText: 'Valor (R\$):'),
               ),
               SizedBox(

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
-              headline6: const TextStyle(
+              titleLarge: const TextStyle(
                   fontFamily: 'OpenSans',
                   fontSize: 18,
                   fontWeight: FontWeight.bold),
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
       ),
-      home: Despesas(),
+      home: const Despesas(),
     );
   }
 }

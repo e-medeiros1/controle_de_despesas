@@ -6,6 +6,8 @@ import 'components/transaction_list.dart';
 import 'models/transaction.dart';
 
 class Despesas extends StatefulWidget {
+  const Despesas({Key? key}) : super(key: key);
+
   @override
   _DespesasState createState() => _DespesasState();
 }
@@ -40,6 +42,7 @@ class _DespesasState extends State<Despesas> {
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (_) {
         return TransactionForm(onSubmit: _addTransaction);
       },
