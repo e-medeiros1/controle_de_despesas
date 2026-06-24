@@ -4,17 +4,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:minhas_despesas/components/transaction_form.dart';
 import 'package:minhas_despesas/components/transaction_list.dart';
 import 'package:minhas_despesas/models/transaction.dart';
 import 'package:minhas_despesas/utils/currency_format.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 enum TransactionFilterPreset {
   all,
-  today,
-  last7Days,
-  last15Days,
+  income,
+  expense,
   customRange,
 }
 
@@ -44,18 +43,10 @@ class _DespesasState extends State<Despesas> {
     switch (_activeFilter) {
       case TransactionFilterPreset.all:
         return List<Transaction>.from(_transaction);
-      case TransactionFilterPreset.today:
-        final start = _startOfDay(now);
-        final end = _endOfDay(now);
-        return _transaction
-            .where((tr) => !tr.date.isBefore(start) && !tr.date.isAfter(end))
-            .toList();
-      case TransactionFilterPreset.last7Days:
-        final start = now.subtract(const Duration(days: 6));
-        return _transaction.where((tr) => tr.date.isAfter(start)).toList();
-      case TransactionFilterPreset.last15Days:
-        final start = now.subtract(const Duration(days: 14));
-        return _transaction.where((tr) => tr.date.isAfter(start)).toList();
+      case TransactionFilterPreset.income:
+        return _transaction.where((tr) => tr.kind == TransactionKind.income).toList();
+      case TransactionFilterPreset.expense:
+        return _transaction.where((tr) => tr.kind == TransactionKind.expense).toList();
       case TransactionFilterPreset.customRange:
         if (_customRange == null) {
           return List<Transaction>.from(_transaction);
@@ -142,12 +133,10 @@ class _DespesasState extends State<Despesas> {
     switch (_activeFilter) {
       case TransactionFilterPreset.all:
         return 'Todos os registros';
-      case TransactionFilterPreset.today:
-        return 'Dia atual';
-      case TransactionFilterPreset.last7Days:
-        return 'Últimos 7 dias';
-      case TransactionFilterPreset.last15Days:
-        return 'Últimos 15 dias';
+      case TransactionFilterPreset.income:
+        return 'Entradas';
+      case TransactionFilterPreset.expense:
+        return 'Saídas';
       case TransactionFilterPreset.customRange:
         if (_customRange == null) {
           return 'Intervalo personalizado';
@@ -226,15 +215,13 @@ class _DespesasState extends State<Despesas> {
 
   void _editTransaction(Transaction transaction) {
     _editingTransactionId = transaction.id;
-    _editingTransactionIndex =
-        _transaction.indexWhere((tr) => tr.id == transaction.id);
+    _editingTransactionIndex = _transaction.indexWhere((tr) => tr.id == transaction.id);
     _openTransactionFormModal(transaction: transaction);
   }
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape =
-        MediaQuery.of(context).orientation == Orientation.landscape;
+    final isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
 
     final appBar = AppBar(
       backgroundColor: Colors.transparent,
@@ -303,10 +290,7 @@ class _DespesasState extends State<Despesas> {
                             children: [
                               Text(
                                 'Acompanhe suas despesas',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(
+                                style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                       color: Colors.white,
                                       fontSize: 15,
                                       height: 1.1,
@@ -332,32 +316,24 @@ class _DespesasState extends State<Despesas> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Wrap(
+                    alignment: WrapAlignment.center,
                     spacing: 8,
                     runSpacing: 8,
                     children: [
                       ChoiceChip(
                         label: const Text('Todos'),
                         selected: _activeFilter == TransactionFilterPreset.all,
-                        onSelected: (_) =>
-                            _setPreset(TransactionFilterPreset.all),
+                        onSelected: (_) => _setPreset(TransactionFilterPreset.all),
                       ),
                       ChoiceChip(
-                        label: const Text('Dia atual'),
-                        selected: _activeFilter == TransactionFilterPreset.today,
-                        onSelected: (_) =>
-                            _setPreset(TransactionFilterPreset.today),
+                        label: const Text('Entradas'),
+                        selected: _activeFilter == TransactionFilterPreset.income,
+                        onSelected: (_) => _setPreset(TransactionFilterPreset.income),
                       ),
                       ChoiceChip(
-                        label: const Text('7 dias'),
-                        selected: _activeFilter == TransactionFilterPreset.last7Days,
-                        onSelected: (_) =>
-                            _setPreset(TransactionFilterPreset.last7Days),
-                      ),
-                      ChoiceChip(
-                        label: const Text('15 dias'),
-                        selected: _activeFilter == TransactionFilterPreset.last15Days,
-                        onSelected: (_) =>
-                            _setPreset(TransactionFilterPreset.last15Days),
+                        label: const Text('Saídas'),
+                        selected: _activeFilter == TransactionFilterPreset.expense,
+                        onSelected: (_) => _setPreset(TransactionFilterPreset.expense),
                       ),
                       ActionChip(
                         label: Text(
