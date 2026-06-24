@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
     //   DeviceOrientation.portraitUp,
     // ]);
     return MaterialApp(
-      title: 'Minhas despesas',
+      title: 'Controle de despesas',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xFFF4F7FB),

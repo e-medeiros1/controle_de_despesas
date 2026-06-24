@@ -38,8 +38,6 @@ class _DespesasState extends State<Despesas> {
       DateTime(date.year, date.month, date.day, 23, 59, 59, 999);
 
   List<Transaction> get _filteredTransactions {
-    final now = DateTime.now();
-
     switch (_activeFilter) {
       case TransactionFilterPreset.all:
         return List<Transaction>.from(_transaction);
@@ -289,7 +287,7 @@ class _DespesasState extends State<Despesas> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Acompanhe suas despesas',
+                                'Acompanhe suas finanças',
                                 style: Theme.of(context).textTheme.titleLarge!.copyWith(
                                       color: Colors.white,
                                       fontSize: 15,
@@ -298,7 +296,7 @@ class _DespesasState extends State<Despesas> {
                               ),
                               const SizedBox(height: 4),
                               const Text(
-                                'Adicione valores, compare a semana e encontre padrões rapidamente.',
+                                'Adicione valores, compare e encontre padrões rapidamente.',
                                 style: TextStyle(
                                   color: Color(0xFFE8FFFC),
                                   height: 1.2,
