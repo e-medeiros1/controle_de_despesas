@@ -5,7 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:minhas_despesas/models/transaction.dart';
 import 'package:minhas_despesas/utils/currency_format.dart';
 
-class TransactionItem extends StatefulWidget {
+class TransactionItem extends StatelessWidget {
   const TransactionItem({
     Key? key,
     required this.tr,
@@ -15,15 +15,16 @@ class TransactionItem extends StatefulWidget {
   final Transaction tr;
   final VoidCallback onEdit;
 
-  @override
-  State<TransactionItem> createState() => _TransactionItemState();
-}
+  void _handleEdit() {
+    // Adia a abertura do sheet para o próximo frame, permitindo que o
+    // feedback visual do toque conclua antes da animação do modal.
+    WidgetsBinding.instance.addPostFrameCallback((_) => onEdit());
+  }
 
-class _TransactionItemState extends State<TransactionItem> {
   @override
   Widget build(BuildContext context) {
     final isWide = MediaQuery.of(context).size.width > 500;
-    final isIncome = widget.tr.kind == TransactionKind.income;
+    final isIncome = tr.kind == TransactionKind.income;
     final accentColor = isIncome ? const Color(0xFF0F766E) : const Color(0xFFB91C1C);
     final backgroundTone = isIncome ? const Color(0xFFEAF5F3) : const Color(0xFFFDECEC);
 
@@ -51,7 +52,7 @@ class _TransactionItemState extends State<TransactionItem> {
           ),
           child: Center(
             child: Text(
-              currencyFormat.format(widget.tr.value),
+              currencyFormat.format(tr.value),
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
@@ -62,7 +63,7 @@ class _TransactionItemState extends State<TransactionItem> {
           ),
         ),
         title: Text(
-          widget.tr.title,
+          tr.title,
           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: const Color(0xFF12332F),
               ),
@@ -82,7 +83,7 @@ class _TransactionItemState extends State<TransactionItem> {
               ),
               const SizedBox(height: 2),
               Text(
-                DateFormat('MMM d, y').format(widget.tr.date),
+                DateFormat('MMM d, y').format(tr.date),
                 style: const TextStyle(
                   color: Color(0xFF6E7E7A),
                   fontWeight: FontWeight.w500,
@@ -93,9 +94,7 @@ class _TransactionItemState extends State<TransactionItem> {
         ),
         trailing: isWide
             ? TextButton.icon(
-                onPressed: () {
-                  widget.onEdit();
-                },
+                onPressed: _handleEdit,
                 icon: const Icon(Icons.edit_outlined),
                 label: const Text('Editar'),
                 style: TextButton.styleFrom(
@@ -104,9 +103,7 @@ class _TransactionItemState extends State<TransactionItem> {
                 ),
               )
             : IconButton(
-                onPressed: () {
-                  widget.onEdit();
-                },
+                onPressed: _handleEdit,
                 icon: const Icon(Icons.edit_outlined),
                 color: const Color(0xFF0F766E),
               ),

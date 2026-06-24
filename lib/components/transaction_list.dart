@@ -64,9 +64,9 @@ class TransactionList extends StatelessWidget {
             padding: const EdgeInsets.only(top: 8, bottom: 16),
             itemCount: transactions.length,
             itemBuilder: (ctx, index) {
-              final tr = transactions[index];
+              final tr = transactions[transactions.length - 1 - index];
               return TransactionItem(
-                key: GlobalObjectKey(tr),
+                key: ValueKey(tr.id),
                 tr: tr,
                 onEdit: () => onEdit(tr),
               );

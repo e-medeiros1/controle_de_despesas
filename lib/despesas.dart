@@ -151,20 +151,26 @@ class _DespesasState extends State<Despesas> {
     await showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      useSafeArea: true,
       backgroundColor: Colors.transparent,
-      builder: (_) {
-        return TransactionForm(
-          transaction: transaction,
-          onSubmit: _saveTransactionFromForm,
-          onDelete: transaction == null
-              ? null
-              : () {
-                  _deleteTransaction(transaction.id);
-                  Navigator.of(context).pop();
-                },
+      builder: (sheetContext) {
+        final viewInsets = MediaQuery.of(sheetContext).viewInsets;
+        return Padding(
+          padding: EdgeInsets.only(bottom: viewInsets.bottom),
+          child: TransactionForm(
+            transaction: transaction,
+            onSubmit: _saveTransactionFromForm,
+            onDelete: transaction == null
+                ? null
+                : () {
+                    _deleteTransaction(transaction.id);
+                    Navigator.of(sheetContext).pop();
+                  },
+          ),
         );
       },
     );
+    _clearEditingState();
   }
 
   void _saveTransactionFromForm(
@@ -224,13 +230,14 @@ class _DespesasState extends State<Despesas> {
     final appBar = AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      titleSpacing: 20,
+      titleSpacing: 0,
       centerTitle: false,
     );
 
     final availableHeight = MediaQuery.of(context).size.height -
         appBar.preferredSize.height -
-        MediaQuery.of(context).padding.top;
+        MediaQuery.of(context).padding.top -
+        110;
 
     return SafeArea(
       child: Scaffold(

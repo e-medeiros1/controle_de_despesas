@@ -78,7 +78,6 @@ class _TransactionFormState extends State<TransactionForm> {
 
   @override
   Widget build(BuildContext context) {
-    final bottomInset = MediaQuery.of(context).viewInsets.bottom;
     final isEditing = widget.transaction != null;
 
     return SingleChildScrollView(
@@ -99,11 +98,11 @@ class _TransactionFormState extends State<TransactionForm> {
           ],
         ),
         child: Padding(
-          padding: EdgeInsets.only(
+          padding: const EdgeInsets.only(
             top: 16,
             right: 18,
             left: 18,
-            bottom: 16 + bottomInset,
+            bottom: 16,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -132,14 +131,14 @@ class _TransactionFormState extends State<TransactionForm> {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: _kind == TransactionKind.expense
-                              ? const Color(0xFFB91C1C)
+                              ? const Color(0xFFef6e15)
                               : const Color(0xFFF3F4F6),
                           foregroundColor: _kind == TransactionKind.expense
                               ? Colors.white
                               : const Color(0xFF12332F),
                           elevation: 0,
                         ),
-                        child: const Text('Nova transação'),
+                        child: const Text('Nova despesa'),
                       ),
                     ),
                   ),
